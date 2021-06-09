@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { SpeakerContext } from "../context/SpeakerContext";
 
-export default function SpeakerFavorite({ favorite, onFavoriteToggle }) {
+export default function SpeakerFavorite() {
+  const { speaker, updateRecord } = useContext(SpeakerContext);
   const [inTransition, setInTransition] = useState(false);
   function doneCallback() {
     setInTransition(false);
@@ -13,12 +15,20 @@ export default function SpeakerFavorite({ favorite, onFavoriteToggle }) {
       <span
         onClick={function () {
           setInTransition(true);
-          return onFavoriteToggle(doneCallback);
+          updateRecord(
+            {
+              ...speaker,
+              favorite: !speaker.favorite,
+            },
+            doneCallback
+          );
         }}
       >
         <i
           className={
-            favorite === true ? "fa fa-star orange" : "fa fa-star-o orange"
+            speaker.favorite === true
+              ? "fa fa-star orange"
+              : "fa fa-star-o orange"
           }
         />{" "}
         Favorite{" "}
