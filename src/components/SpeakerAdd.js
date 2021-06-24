@@ -1,4 +1,7 @@
-export default function SpeakerAdd({ eventYear, insertRecord }) {
+import { withAuth } from "./WithAuth";
+
+function SpeakerAdd({ eventYear, insertRecord, loggedInUser }) {
+  if (!loggedInUser || loggedInUser.length === 0) return null;
   return (
     <a href="#" className="addSes">
       <i
@@ -29,3 +32,5 @@ export default function SpeakerAdd({ eventYear, insertRecord }) {
     </a>
   );
 }
+
+export default SpeakerAdd;

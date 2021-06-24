@@ -1,8 +1,7 @@
 import { useContext } from "react";
 import Speaker from "./Speaker";
 import ReactPlaceHolder from "react-placeholder";
-import useRequestDelay, { REQUEST_STATUS } from "../hooks/useRequestDelay";
-import { data } from "../../SpeakerData";
+import useRequestRest, { REQUEST_STATUS } from "../hooks/useRequestRest";
 import { SpeakerFilterContext } from "../context/SpeakerFilterContext";
 import SpeakerAdd from "./SpeakerAdd";
 
@@ -14,7 +13,7 @@ export default function SpeakersList() {
     updateRecord,
     insertRecord,
     deleteRecord,
-  } = useRequestDelay(200, data);
+  } = useRequestRest();
 
   const { searchQuery, eventYear } = useContext(SpeakerFilterContext);
 

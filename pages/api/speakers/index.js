@@ -1,4 +1,3 @@
-import { data } from "../../../SpeakerData";
 import path from "path";
 import fs from "fs";
 
@@ -19,7 +18,7 @@ export default async function handler(req, res) {
     const speakers = JSON.parse(readFileData).speakers;
     if (speakers) {
       res.setHeader("content-type", "application/json");
-      res.status(200).send(JSON.stringify(spekaers, null, 2));
+      res.status(200).send(JSON.stringify(speakers, null, 2));
       console.log("GET /api/speakers status:200");
     }
   } catch (e) {

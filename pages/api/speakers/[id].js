@@ -106,7 +106,7 @@ export default async function handler(req, res) {
     }
   }
 
-  async function DeleteMethod() {
+  async function deleteMethod() {
     try {
       const readFileData = await readFile(jsonFile);
       await delay(1000);
